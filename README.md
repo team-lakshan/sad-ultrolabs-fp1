@@ -41,3 +41,4 @@ public class MySQL {
 }
 
 ```
+### 3 make a copy of nbproject.sample and rename it to nbproject
