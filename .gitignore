@@ -30,7 +30,7 @@ nbproject/
 
 #Database class
 src/util/MySQL.java
-
+test/
 
 #libary folder
 lib/
