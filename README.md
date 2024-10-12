@@ -1,14 +1,17 @@
-### 1 clone the repo fist
+# Instructions
 
-### 2 adding database calass to your repo
+### 1. Clone the repository first
 
-#### location =src/util/MySQL.java
+### 2. Add the MySQL database class to your repository
+
+#### Location: `src/util/MySQL.java`
 
 ```sh
+java
 package util;
 
 /**
- *
+ * MySQL Database Utility Class
  * @author Nawwa
  */
 import java.sql.Connection;
@@ -39,12 +42,12 @@ public class MySQL {
         }
     }
 }
-
 ```
-### 3 Make a copy of nbproject.sample and rename it to nbproject
 
-### 4 Open the project using NetBeans IDE (to work this step 3 is a must)
-
-### 5 Copy the google drive lib collection to your local PC
-
-### 6 In NetBeans right click on project and go to resolve problem and add the required libs
+### 3. Make a copy of nbproject.sample and rename it to nbproject
+### 4. Open the project using NetBeans IDE (Step 3 is required for this step to work)
+### 5. Copy the Google Drive library collection to your local PC 
+```sh 
+https://drive.google.com/drive/folders/1O-sHmuYiOkjf923ZMJpEG81Ht-lbuwJ1?usp=sharing
+```
+### 6. Now, add the library files to the project 
