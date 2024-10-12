@@ -7,7 +7,6 @@
 #### Location: `src/util/MySQL.java`
 
 ```sh
-java
 package util;
 
 /**
