@@ -7,12 +7,14 @@ on:
     types:
       - opened
       - synchronize
+      - closed  # This event triggers when the PR is merged or closed
 
 jobs:
-  notify:
+  notify_on_open:
+    if: github.event.action == 'opened' || github.event.action == 'synchronize'
     runs-on: ubuntu-latest
     steps:
-    - name: Send Telegram Notification
+    - name: Send Telegram Notification for Opened PR
       env:
         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
@@ -20,3 +22,16 @@ jobs:
         curl -s -X POST https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendMessage \
         -d chat_id=$TELEGRAM_CHAT_ID \
         -d text="New pull request to main branch: ${{ github.event.pull_request.html_url }}"
+
+  notify_on_merge:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+    - name: Send Telegram Notification for Merged PR
+      env:
+        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+      run: |
+        curl -s -X POST https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendMessage \
+        -d chat_id=$TELEGRAM_CHAT_ID \
+        -d text="Pull request merged into main branch: ${{ github.event.pull_request.html_url }} 🎉"
